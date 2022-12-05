@@ -3,7 +3,7 @@ package com.rebel.RestAPI.DogRESTAPI.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "dog")
+
 public class Dog
 {
     @Id
