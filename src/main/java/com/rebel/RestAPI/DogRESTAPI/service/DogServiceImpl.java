@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DogServiceImpl implements DogService
@@ -30,6 +31,12 @@ public class DogServiceImpl implements DogService
 
     @Override
     public String getById(Long id) {
-        return dogRepo.findBreedById(id);
+
+        Optional<String> optionalBreed = Optional.ofNullable(dogRepo.findBreedById(id));
+        String breed = optionalBreed.orElseThrow(DogNotFoundException::new);
+        return breed;
+
+
+
     }
 }
